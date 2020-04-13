@@ -7,9 +7,13 @@ class Mentor extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-        home: Scaffold(
-            body: Container(
-      child: Text('Hello Yosh'),
-    ),),);
+      home: Scaffold(
+        body: Center(
+          child: Container(
+            child: Text('Hello Yosh'),
+          ),
+        ),
+      ),
+    );
   }
 }
