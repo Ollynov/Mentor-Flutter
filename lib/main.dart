@@ -4,18 +4,19 @@ import 'package:provider/provider.dart';
 void main() => runApp(MyApp());
 
 class UserModel {
-  String name = "YoshCode"
+  String name = "YoshCode";
 }
+
+var stream = Stream.fromIterable([UserModel()]);
 
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return Provider<UserModel>.value(
-      value: UserModel(),
+    return StreamProvider<UserModel>.value(
+      value: stream,
       child: MaterialApp(
         routes: {
           '/home': (context) => HomeScreen(),
-          '/slideshow': (context) => SlideshowScreen()
         },
         home: HomeScreen(),
       ),
@@ -24,73 +25,17 @@ class MyApp extends StatelessWidget {
 }
 
 class HomeScreen extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text('Home'),
-        backgroundColor: Colors.red,
-      ),
-      body: Center(
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            FlatButton(
-              child: Text('push'),
-              color: Colors.green,
-              onPressed: () {
-                // Navigator.push(
-                //   context,
-                //   MaterialPageRoute(builder: (context) => SlideshowScreen(name: 'Jeff'))
-                // );
+//  final Firestore db = Firestore.instance;
 
-                //  Navigator.pushNamed(
-                //     context,
-                //     '/slideshow'
-                //   );
+ @override
+ Widget build(BuildContext context) {
 
-                Navigator.pushNamed(context, '/slideshow');
-              },
-            ),
-          ],
-        ),
-      ),
-    );
-  }
-}
+   var user = Provider.of<UserModel>(context);
 
-class SlideshowScreen extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text('Slideshow'),
-        backgroundColor: Colors.red[200],
-      ),
-      body: Center(
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            FlatButton(
-              child: Text('push'),
-              color: Colors.green,
-              onPressed: () {
-                // Navigator.push(
-                //   context,
-                //   MaterialPageRoute(builder: (context) => SlideshowScreen(name: 'Jeff'))
-                // );
-
-                //  Navigator.pushNamed(
-                //     context,
-                //     '/slideshow'
-                //   );
-
-                Navigator.pushNamed(context, '/slideshow');
-              },
-            ),
-          ],
-        ),
-      ),
-    );
-  }
+   return Scaffold(
+     body: Center(
+       child: Text(user.name),
+     ),
+   );
+ }
 }
