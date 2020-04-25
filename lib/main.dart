@@ -14,6 +14,21 @@ class MyApp extends StatelessWidget {
       navigatorObservers: [
         FirebaseAnalyticsObserver(analytics: FirebaseAnalytics()),
       ],
+
+      routes: {
+        '/': (context) => HomeScreen(),
+        '/psychologists': (context) => PsychologistsScreen(),
+      },
+
+      theme: ThemeData(
+        fontFamily: 'Nunito',
+        bottomAppBarTheme: BottomAppBarTheme(color: Colors.black87,),
+        brightness: Brightness.dark,
+        textTheme: TextTheme(
+          bodyText1: TextStyle(fontSize: 18),
+          bodyText2: TextStyle(fontSize: 16)
+        )
+      ),
     );
   }
 }
