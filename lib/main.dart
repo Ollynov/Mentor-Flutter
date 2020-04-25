@@ -1,41 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:firebase_analytics/firebase_analytics.dart';
+import 'package:firebase_analytics/observer.dart';
 
 void main() => runApp(MyApp());
 
-class UserModel {
-  String name = "YoshCode";
-}
-
-var stream = Stream.fromIterable([UserModel()]);
-
 class MyApp extends StatelessWidget {
-  @override
+  @override 
   Widget build(BuildContext context) {
-    return StreamProvider<UserModel>.value(
-      value: stream,
-      child: MaterialApp(
-        routes: {
-          '/home': (context) => HomeScreen(),
-        },
-        home: HomeScreen(),
-      ),
+    return MaterialApp(
+
+      // The navigatorObservers watch the path and history of navigation. The FirebaseAnalyticsObserver that we passed in will give us analytics in the firebase dashboard
+      navigatorObservers: [
+        FirebaseAnalyticsObserver(analytics: FirebaseAnalytics()),
+      ],
     );
   }
-}
-
-class HomeScreen extends StatelessWidget {
-//  final Firestore db = Firestore.instance;
-
- @override
- Widget build(BuildContext context) {
-
-   var user = Provider.of<UserModel>(context);
-
-   return Scaffold(
-     body: Center(
-       child: Text(user.name),
-     ),
-   );
- }
 }
