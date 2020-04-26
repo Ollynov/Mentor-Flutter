@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:firebase_analytics/firebase_analytics.dart';
 import 'package:firebase_analytics/observer.dart';
+import 'screens/screens.dart';
 
 void main() => runApp(MyApp());
 
@@ -29,9 +30,10 @@ class MyApp extends StatelessWidget {
           bodyText2: TextStyle(fontSize: 16),
           button: TextStyle(letterSpacing: 1.5, fontWeight: FontWeight.bold),
           headline1: TextStyle(fontWeight: FontWeight.bold),
-          subtitle1: TextStyle(color: Colors.grey)
+          subtitle1: TextStyle(color: Colors.grey),
         )
       ),
     );
   }
 }
+
