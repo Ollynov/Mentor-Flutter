@@ -9,14 +9,22 @@ class AppBottomNav extends StatelessWidget {
       items: [
         BottomNavigationBarItem(
             icon: Icon(FontAwesomeIcons.graduationCap, size: 20),
-            title: Text('Topics')),
+            title: Text('Home')),
         BottomNavigationBarItem(
             icon: Icon(FontAwesomeIcons.bolt, size: 20),
-            title: Text('About')),
-        BottomNavigationBarItem(
-            icon: Icon(FontAwesomeIcons.userCircle, size: 20),
-            title: Text('Profile')),
+            title: Text('Psychologists')),
       ].toList(),
+      fixedColor: Colors.deepPurple[200],
+      onTap: (int idx) {
+        switch(idx) {
+          case 0:
+            Navigator.pushNamed(context, '/');
+            break;
+          case 1:
+            Navigator.pushNamed(context, '/psychologists');
+            break;
+        }
+      },
     );
   }
 }
